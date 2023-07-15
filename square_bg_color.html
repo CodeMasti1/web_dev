@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Square Color Change</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    .square {
+      width: 500px;
+      height: 500px;
+      background-color: #2196f3; /* Initial color of the square */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .color-button {
+      padding: 10px 20px;
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .color-button:hover {
+      background-color: #ff4081;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="square">
+    <button id="colorChangeButton" class="color-button">Click to Change Color</button>
+  </div>
+
+  <script>
+    var button = document.getElementById("colorChangeButton");
+    button.addEventListener("click", function() {
+      var square = document.querySelector(".square");
+      var randomColorInside = "#" + Math.floor(Math.random()*16777215).toString(16);
+      var randomColorOutside = "#" + Math.floor(Math.random()*16777215).toString(16);
+      square.style.backgroundColor = randomColorInside;
+      document.body.style.backgroundColor = randomColorOutside;
+    });
+  </script>
+</body>
+</html>
