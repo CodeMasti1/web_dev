@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Background Color</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f1f1f1;
+    }
+    .button-container {
+      text-align: center;
+    }
+    .random-button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="button-container">
+    <button class="random-button" onclick="changeBackgroundColor()">Change Background Color</button>
+  </div>
+
+  <script>
+    function changeBackgroundColor() {
+      var colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF']; // Array of colors
+      var randomColor = colors[Math.floor(Math.random() * colors.length)]; // Select a random color from the array
+      document.body.style.backgroundColor = randomColor; // Apply the random color to the body background
+    }
+  </script>
+</body>
+</html>
