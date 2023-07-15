@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Square Color Change</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffffff; /* Initial background color of the webpage */
+      transition: background-color 0.3s;
+    }
+    
+    .main-square {
+      width: 500px;
+      height: 500px;
+      background-color: #2196f3; /* Initial color of the main square */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #000000; /* Black border */
+    }
+
+    .small-square {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+    }
+
+    .outside-square {
+      width: 40px;
+      height: 40px;
+      margin: 0 5px;
+    }
+    
+    .color-button {
+      padding: 10px 20px;
+      background-color: #ffffff;
+      color: #000000;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .color-button:hover {
+      background-color: #ff4081;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-square">
+    <div class="small-square" id="leftSquare"></div>
+    <div class="small-square" id="rightSquare"></div>
+  </div>
+  <div class="outside-square" id="topSquare"></div>
+  <div class="outside-square" id="bottomSquare"></div>
+  <button id="colorChangeButton" class="color-button">Click to Change Color</button>
+
+  <script>
+    var button = document.getElementById("colorChangeButton");
+    var leftSquare = document.getElementById("leftSquare");
+    var rightSquare = document.getElementById("rightSquare");
+    var topSquare = document.getElementById("topSquare");
+    var bottomSquare = document.getElementById("bottomSquare");
+
+    button.addEventListener("click", function() {
+      var mainSquare = document.querySelector(".main-square");
+      var randomColorMain = "#" + Math.floor(Math.random()*16777215).toString(16);
+      var randomColorLeft = "#" + Math.floor(Math.random()*16777215).toString(16);
+      var randomColorRight = "#" + Math.floor(Math.random()*16777215).toString(16);
+      var randomColorTop = "#" + Math.floor(Math.random()*16777215).toString(16);
+      var randomColorBottom = "#" + Math.floor(Math.random()*16777215).toString(16);
+      mainSquare.style.backgroundColor = randomColorMain;
+      leftSquare.style.backgroundColor = randomColorLeft;
+      rightSquare.style.backgroundColor = randomColorRight;
+      topSquare.style.backgroundColor = randomColorTop;
+      bottomSquare.style.backgroundColor = randomColorBottom;
+
+      var randomColorBackground = "#" + Math.floor(Math.random()*16777215).toString(16);
+      document.body.style.backgroundColor = randomColorBackground;
+    });
+  </script>
+</body>
+</html>
