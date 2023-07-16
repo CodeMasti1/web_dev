@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS styling for the square */
+    #square {
+      width: 500px;
+      height: 500px;
+      background-color: red;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rotate {
+      animation: rotateSquare 2s linear infinite;
+    }
+
+    @keyframes rotateSquare {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    #text {
+      font-size: 36px;
+      color: white;
+    }
+
+    #text-container {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #text-left,
+    #text-right {
+      font-size: 24px;
+      color: white;
+      padding: 10px;
+      animation: moveTextLeft 2s linear infinite;
+    }
+
+    @keyframes moveTextLeft {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body bgcolor="Black">
+  <div id="square">
+    <button id="goButton" onclick="startRotation()">Start</button>
+    <span id="text" style="display: none;">Code.masti</span>
+  </div>
+  <div id="text-container">
+    <div id="text-left">Code</div>
+    <div id="text-right">Masti</div>
+  </div>
+
+  <script>
+    // JavaScript logic to start the rotation and text animation
+    function startRotation() {
+      var square = document.getElementById('square');
+      var text = document.getElementById('text');
+      var textLeft = document.getElementById('text-left');
+      var textRight = document.getElementById('text-right');
+      square.classList.add('rotate');
+      text.style.display = 'block';
+      textLeft.style.animationPlayState = 'running';
+      textRight.style.animationPlayState = 'running';
+      document.getElementById('goButton').disabled = true;
+    }
+  </script>
+</body>
+</html>
