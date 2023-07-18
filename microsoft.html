@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Four Divs - Handle Individually</title>
+  <style>
+    
+    :root {
+      --container-gap: 7px; 
+      --div-gap: 7px; 
+    }
+
+    
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--container-gap);
+    }
+
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: var(--div-gap);
+    }
+
+  
+    .div-orange, .div-green, .div-blue, .div-yellow {
+      position: relative; 
+      width: 100px;
+      height: 100px;
+      cursor: grab;
+    }
+
+    .div-orange {
+      background-color: #F25022;
+    }
+
+    .div-green {
+      background-color: #00A4EF;
+    }
+
+    .div-blue {
+      background-color: #7FBA00;
+    }
+
+    .div-yellow {
+      background-color: #FFB900;
+      overflow: hidden; 
+    }
+    .outside-text {
+      position: absolute;
+top: 582px;
+right: 790px;
+
+font-weight: bold;
+background-image: linear-gradient(
+    -225deg,
+    #F25022 0%,
+    #7FBA00 29%,
+    #00A4EF 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+ 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 70px;
+
+
+color: #737373;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+   
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="container">
+      <div class="div-orange" draggable="true"></div>
+      <div class="div-green" draggable="true"></div>
+    </div>
+    <div class="container">
+      <div class="div-blue" draggable="true"></div>
+      <div class="div-yellow" draggable="true"></div>
+    </div>
+  </div>
+
+ 
+  <div class="outside-text">Microsoft</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3 class="animate-charcter"></h3>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
