@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Draggable Div Element</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .draggable {
+            position: absolute;
+            width: 150px;
+            height: 100px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 100px;
+            cursor: grab;
+            border-radius: 10px; /* Rounded corners */
+            transition: background-color 0.3s ease; /* Smooth hover effect transition */
+            box-shadow: 0 0 0 6px transparent; /* Initial transparent shadow */
+            left: 50%; /* Center horizontally */
+            top: 50%; /* Center vertically */
+            transform: translate(-50%, -50%); /* Center adjustment */
+        }
+
+        .draggable:hover {
+            background-color: blue; /* Hover background color */
+            color: white; /* Change text color to white on hover */
+            box-shadow: 0 0 0 6px red; /* Red shadow on the top */
+        }
+    </style>
+</head>
+<body>
+    <div class="draggable" id="myDiv">
+        Drag me!
+    </div>
+
+    <script>
+        var draggableElement = document.getElementById('myDiv');
+        var offsetX, offsetY, isDragging = false;
+
+        function startActions() {
+            // Start the color change loop
+            var colors = ['red', 'green', 'blue', 'yellow', 'purple', 'orange', 'cyan', 'magenta'];
+
+            function changeColor() {
+                var randomColor = colors[Math.floor(Math.random() * colors.length)];
+                draggableElement.style.boxShadow = '0 0 0 6px ' + randomColor;
+                setTimeout(changeColor, 1000); // Change color every 1 second
+            }
+
+            changeColor();
+
+            // Start dragging action
+            draggableElement.addEventListener('mousedown', function(e) {
+                isDragging = true;
+                offsetX = e.clientX - draggableElement.getBoundingClientRect().left;
+                offsetY = e.clientY - draggableElement.getBoundingClientRect().top;
+                draggableElement.style.cursor = 'grabbing';
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (!isDragging) return;
+                draggableElement.style.left = (e.clientX - offsetX) + 'px';
+                draggableElement.style.top = (e.clientY - offsetY) + 'px';
+            });
+
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+                draggableElement.style.cursor = 'grab';
+            });
+        }
+
+        draggableElement.addEventListener('mouseenter', startActions);
+        draggableElement.addEventListener('mouseleave', function() {
+            draggableElement.style.boxShadow = '0 0 0 6px red'; // Restore red color on mouse leave
+        });
+    </script>
+</body>
+</html>
